@@ -1,12 +1,14 @@
-'use client';
-import cl from './Navigation.module.css';
+'use client'
+import { usePersonStore } from '@/store'
+import cl from './Navigation.module.css'
 import cn from 'classnames'
-import Image from 'next/image';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import Image from 'next/image'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 export const Navigation = () => {
-	const pathname = usePathname();
+	const pathname = usePathname()
+	const filmLength = usePersonStore((state) => state.userFilms).length
 
 	return (
 		<header className={cl.header}>
@@ -25,7 +27,6 @@ export const Navigation = () => {
 						Поиск фильмов
 					</Link>
 
-					{/* <div className={cl.headerRightItem}> */}
 					<Link
 						className={cn(cl.headerRightItem, {
 							[cl.active]: pathname === '/favorites',
@@ -33,10 +34,11 @@ export const Navigation = () => {
 						href={'/favorites'}
 					>
 						Избранное
+						<div className={`${cl.favorite}`}>{filmLength}</div>
 					</Link>
-					{/* </div> */}
+					<Link href={'/login'} className={cl.headerRightItem}>Войти</Link>
 				</div>
 			</nav>
 		</header>
-	);
+	)
 }

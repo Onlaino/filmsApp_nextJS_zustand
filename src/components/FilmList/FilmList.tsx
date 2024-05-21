@@ -1,3 +1,4 @@
+'use client';
 import cl from './FilmList.module.css';
 import { Heading } from '../ui/Heading/Heading';
 import { Paragraph } from '../ui/Paragraph/Paragraph';
@@ -6,7 +7,10 @@ import { IFilmListProps } from './filmList.props';
 import { FilmListItem } from '../FilmItem/FilmItem';
 import { NOT_FOUND_IMAGE_URL } from '@/helpers/notFoundImage';
 
+
 export const FilmList: FC<IFilmListProps> = ({ films }) => {
+	
+
 	return (
 		<>
 			{films.length ? (

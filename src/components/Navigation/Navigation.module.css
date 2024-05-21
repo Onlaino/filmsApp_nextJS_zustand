@@ -75,6 +75,8 @@
 	top: 13px;
 	right: 2px;
 	font-size: 12px;
+		background-color: #7b6ef6;
+	border-radius: 50%;
 }
 
 .hasFilms {
