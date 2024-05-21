@@ -24,10 +24,17 @@ export const Navigation = () => {
 					>
 						Поиск фильмов
 					</Link>
-					
-					<div className={cl.headerRightItem}>
-						<Link href={'/favorites'}>Избранное</Link>
-					</div>
+
+					{/* <div className={cl.headerRightItem}> */}
+					<Link
+						className={cn(cl.headerRightItem, {
+							[cl.active]: pathname === '/favorites',
+						})}
+						href={'/favorites'}
+					>
+						Избранное
+					</Link>
+					{/* </div> */}
 				</div>
 			</nav>
 		</header>

@@ -16,7 +16,7 @@ export const InSelect = ({ onClick, isAdded, ...props }: IInSelectProps) => {
 			{isAdded ? (
 				<Image src='/inFavorites.svg' alt='inFavorites' />
 			) : (
-				<Image src='/like.svg' alt='like' />
+				<Image src='/like.svg' alt='like' width={15} height={15}/>
 			)}
 			<Paragraph
 				clazz={cn(cl.selectParargaph, {

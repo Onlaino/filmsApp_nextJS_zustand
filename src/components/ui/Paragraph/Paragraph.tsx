@@ -5,7 +5,13 @@ import { ParagraphProps } from './paragraph.props';
 
 export const Paragraph: FC<ParagraphProps> = ({clazz, children, ...props}) => {
 	return (
-		<p {...props} className={clazz ? `${clazz} ${cl.paragraph}` : cl.paragraph}>
+		<p
+			{...props}
+			// className={clazz ? `${clazz} ${cl.paragraph}` : cl.paragraph}
+			className={cn(cl.paragraph, {
+				[clazz as string]: clazz
+			})}
+		>
 			{children}
 		</p>
 	);

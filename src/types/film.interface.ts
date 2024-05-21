@@ -1,12 +1,12 @@
 export interface IFilm {
-	_id: string;
-	id: string;
-	primaryImage: PrimaryImage;
-	titleType: TitleType;
-	titleText: TitleText;
-	originalTitleText: OriginalTitleText;
-	releaseYear: ReleaseYear;
-	releaseDate: ReleaseDate;
+		_id: string
+		id: string
+		primaryImage: PrimaryImage
+		titleType: TitleType
+		titleText: TitleText
+		originalTitleText: OriginalTitleText
+		releaseYear: ReleaseYear
+		releaseDate: ReleaseDate
 }
 
 export interface PrimaryImage {

@@ -30,7 +30,7 @@
 	align-items: center;
 	gap: 5px;
 	transition: all 0.3s ease;
-	font-size: 16px;
+	font-size: 17px;
 	line-height: 1.5;
 	color: #a8aebf;
 }
@@ -56,12 +56,12 @@
 }
 
 .headerRightItem:active {
-	scale: 0.95;
+	scale: .95;
 }
 
 .active {
 	color: white;
-	font-size: 17px;
+	font-size: 19px;
 }
 
 .favorite {
