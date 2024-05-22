@@ -1,0 +1,24 @@
+.skeleton {
+	margin-top: 100px;
+	display: flex;
+	flex-direction: column;
+	gap: 80px;
+}
+
+.header {
+
+}
+
+
+.wrap {
+	display: flex;
+	align-items: center;
+	gap: 80px;
+}
+
+.text {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+

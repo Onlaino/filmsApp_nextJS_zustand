@@ -1,14 +1,8 @@
 'use client'
-import { Heading } from '@/components/ui/Heading/Heading'
 import cl from './FavoritesFilms.module.css'
-// import { Metadata } from 'next'
+import { Heading } from '@/components/ui/Heading/Heading'
 import { usePersonStore } from '@/store'
 import { FilmListItem } from '@/components/FilmItem/FilmItem'
-
-// export const metadata: Metadata = {
-// 	title: 'Избранное',
-// 	description: 'Избранные фильмы',
-// }
 
 export default function FavoritesPage() {
 	const favoriteFilms = usePersonStore((state) => state.userFilms)
