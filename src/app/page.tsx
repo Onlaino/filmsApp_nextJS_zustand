@@ -1,14 +1,22 @@
+// 'use client';
 import { MainBody } from '@/components/MainBody/MainBody';
-import { FilmService } from '@/services/film.service';
+import { RequireAuth } from '@/helpers/RequireAuth/RequireAuth';
+// import { usePersonStore } from '@/store';
+// import { useRouter } from 'next/navigation';
+// import { useEffect } from 'react';
 
-const filmService = new FilmService();
 
-export default async function Home() {
-  const films = await filmService.getAllFilms();
+export default function Home() {
+	// const jwt = usePersonStore(s => s.jwt);
+	// const router = useRouter()
+// 
+	// useEffect(() => {
+		// if (!jwt) router.push('/login')
+	// }, [jwt, router])
 
 	return (
-		<>
-			<MainBody films={films} />
-		</>
+		<RequireAuth>
+			<MainBody />
+		</RequireAuth>
 	);
 }

@@ -8,8 +8,8 @@ export type UserState = {
 }
 
 export type UserActions = {
-	updateUserName: (name: string) => void
-	login: () => void
+	// updateUserName: (name: string) => void
+	login: (name: string) => void
 	logout: () => void
 	addFilm: (film: IFavoriteFilm) => void
 	removeFilm: (id: string) => void

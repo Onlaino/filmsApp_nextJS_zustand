@@ -13,10 +13,15 @@ export const FilmListItem: FC<FilmItemProps> = ({
 	title,
 	rating,
 	id,
-	propIsAdded
+	propIsAdded,
 }) => {
-	const addFilm = usePersonStore(state => state.addFilm);
-	const [isAdded, setIsAdded] = useState<boolean>(false);
+	const addFilm = usePersonStore((state) => state.addFilm)
+	const [isAdded, setIsAdded] = useState<boolean>(false)
+
+	const handleIsAdded = () => {
+		addFilm({ imgId, title, rating, id, isAdded: true })
+		setIsAdded(!isAdded)
+	}
 
 	return (
 		<div className={cl.filmListItems}>
@@ -33,8 +38,8 @@ export const FilmListItem: FC<FilmItemProps> = ({
 				</Link>
 				<Paragraph clazz={cl.filmItemParagraphTitle}>{title}</Paragraph>
 				<InSelect
-					isAdded={isAdded}
-					onClick={() => addFilm({ imgId, title, rating, id, isAdded: true })}
+					isAdded={propIsAdded ? propIsAdded : isAdded}
+					onClick={handleIsAdded}
 				/>
 			</div>
 		</div>

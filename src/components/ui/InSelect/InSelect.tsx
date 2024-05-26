@@ -2,8 +2,8 @@
 
 import cl from './InSelect.module.css'
 import cn from 'classnames'
-import { Paragraph } from '../Paragraph/Paragraph'
 import Image from 'next/image'
+import { Paragraph } from '../Paragraph/Paragraph'
 import { IInSelectProps } from './inSelect.props'
 
 //{ onClick, isAdded, ...props }: IInSelectProps
@@ -26,9 +26,14 @@ export const InSelect = ({ onClick, isAdded, ...props }: IInSelectProps) => {
 			onClick={onClick}
 		>
 			{isAdded ? (
-				<img src='/inFavorites.svg' alt='inFavorites' />
+				<Image
+					width={20}
+					height={20}
+					src='/inFavorites.svg'
+					alt='inFavorites'
+				/>
 			) : (
-				<img src='/like.svg' alt='like' />
+				<Image width={20} height={20} src='/like.svg' alt='like' />
 			)}
 			<Paragraph
 				clazz={cn(cl.selectParargaph, {

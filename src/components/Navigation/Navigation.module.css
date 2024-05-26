@@ -69,13 +69,14 @@
 	justify-content: center;
 	align-items: center;
 	background-color: transparent;
+	color: white;
 	text-align: center;
 	width: 20px;
 	height: 20px;
 	top: 13px;
 	right: 2px;
 	font-size: 12px;
-		background-color: #7b6ef6;
+	background-color: #7b6ef6;
 	border-radius: 50%;
 }
 
@@ -92,8 +93,8 @@
 	text-align: center;
 	display: none;
 	position: absolute;
-    bottom: -100px;
-    right: -50px;
+  bottom: -100px;
+  right: -50px;
 	color: white;
 	background-color: #ffffffae;
 	width: 115px;
@@ -143,4 +144,9 @@
 		width: 80%;
 		background-color: white;
 	}
+}
+
+
+.big {
+	color: #8d82f3;
 }

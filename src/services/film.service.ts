@@ -27,4 +27,14 @@ export class FilmService {
 		const film: IFilm = data.results
 		return film
 	}
+
+	async getFilmsByName(name: string) {
+		const res = await fetch(
+			`${this.BASE_URL}/search/title/${name}?exact=false`,
+			{ headers: this.headers }
+		)
+		const data = await res.json()
+		const films = data.results
+		return films
+	}
 }

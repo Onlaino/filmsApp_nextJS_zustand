@@ -5,20 +5,26 @@ import { Paragraph } from '../ui/Paragraph/Paragraph'
 import { RatingBlock } from '../ui/RatingBlock/RatingBlock'
 import { InSelect } from '../ui/InSelect/InSelect'
 import { IFilmPageProps } from './filmPageComponent.interface'
-import { Suspense } from 'react'
+import { usePersonStore } from '@/store'
+import { usePathname } from 'next/navigation'
+import { IFavoriteFilm } from '@/types/film.interface'
 
-export const FilmPageComponent = (props: IFilmPageProps) => {
+export const FilmPageComponent = ({id, imgId, title, rating, isAdded}: IFavoriteFilm) => {
+	const { userFilms, addFilm } = usePersonStore((s) => s)
+	const pathName = usePathname()
+	const thisFilm = userFilms.find((f) => f.id === pathName.slice(1))
+
 	return (
 		<>
 			<div className={cl.filmInfo}>
 				<div className={cl.filmImage}>
-						<Image
-							src={props.imgUrl}
-							alt={props.imgUrl}
-							width={480}
-							height={720}
-							className={cl.filmImage}
-						/>
+					<Image
+						src={imgId}
+						alt={imgId}
+						width={480}
+						height={720}
+						className={cl.filmImage}
+					/>
 				</div>
 				<div className={cl.filmInfoText}>
 					<div className={cl.filmText}>
@@ -34,13 +40,25 @@ export const FilmPageComponent = (props: IFilmPageProps) => {
 						</Paragraph>
 						<div className={cl.rating}>
 							<RatingBlock clazz={cl.ratingBlock} rating='300' />
-							<InSelect />
+							<InSelect
+								isAdded={thisFilm?.isAdded}
+								onClick={() => {
+									const newIsAddedStatus = !thisFilm?.isAdded
+									addFilm({
+										id,
+										imgId,
+										title,
+										rating,
+										isAdded: newIsAddedStatus,
+									})
+								}}
+							/>
 						</div>
 						<Paragraph clazz={cl.p}>
 							Тип: <span>Movie</span>
 						</Paragraph>
 						<Paragraph clazz={cl.p}>
-							Дата выхода: <span className='span'></span>
+							Дата выхода: <span className='span'>1999</span>
 							{/* {filmById?.releaseYear?.year} */}
 						</Paragraph>
 						<Paragraph clazz={cl.p}>

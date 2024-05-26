@@ -1,8 +1,8 @@
 export interface IFavoriteFilm {
+	id: string
 	imgId: string
 	title: string
 	rating: string
-	id: string
 	isAdded: boolean
 }
 

@@ -11,22 +11,25 @@ const filmService = new FilmService()
 
 export default async function FilmPage({ params }: { params: { id: string } }) {
 	const film = await filmService.getFilmsById(params.id)
+	const { id, primaryImage, titleText } = film
 
 	return (
 		<section>
 			<div className={cl.film}>
 				<div className={cl.head}>
 					<Paragraph clazz={cl.paragraph}>Поиск фильмов</Paragraph>
-					<Heading clazz={cl.heading}>{film.titleText.text}</Heading>
+					<Heading clazz={cl.heading}>{titleText?.text}</Heading>
 				</div>
-				<Suspense fallback={<FilmPageSkeleton/>}>
+				<Suspense fallback={<FilmPageSkeleton />}>
 					<FilmPageComponent
-						imgUrl={
-							film.primaryImage?.url
-								? film.primaryImage.url
-								: NOT_FOUND_IMAGE_URL
+						id={id}
+						isAdded={false}
+						rating='300'
+						title={titleText.text}
+						imgId={
+							primaryImage?.url ? film?.primaryImage.url : NOT_FOUND_IMAGE_URL
 						}
-						releaseYear={film.releaseYear.year}
+						// releaseYear={film?.releaseYear?.year}
 					/>
 				</Suspense>
 			</div>

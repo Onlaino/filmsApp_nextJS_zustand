@@ -5,10 +5,18 @@ import cn from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import PersonIcon from '@mui/icons-material/Person'
+import { useRouter } from 'next/navigation'
 
 export const Navigation = () => {
 	const pathname = usePathname()
-	const filmLength = usePersonStore((state) => state.userFilms).length
+	const router = useRouter();
+	const { userName, jwt, logout, userFilms } = usePersonStore(s => s)
+
+	const handleLogout = () => {
+		logout();
+		router.push('/login');
+	}
 
 	return (
 		<header className={cl.header}>
@@ -34,9 +42,34 @@ export const Navigation = () => {
 						href={'/favorites'}
 					>
 						Избранное
-						<div className={`${cl.favorite}`}>{filmLength}</div>
+						<div className={`${cl.favorite}`}>{userFilms.length}</div>
 					</Link>
-					<Link href={'/login'} className={cl.headerRightItem}>Войти</Link>
+
+					{userName.length > 1 && (
+						<div className={`${cl.headerRightItem} ${cl.big}`}>
+							<PersonIcon />
+							{userName}
+						</div>
+					)}
+
+					{jwt ? (
+						<Link
+							onClick={handleLogout}
+							href={'/login'}
+							className={cl.headerRightItem}
+						>
+							Выйти
+						</Link>
+					) : (
+						<Link
+							href={'/login'}
+							className={cn(cl.headerRightItem, {
+								[cl.active]: pathname === '/login',
+							})}
+						>
+							Войти
+						</Link>
+					)}
 				</div>
 			</nav>
 		</header>

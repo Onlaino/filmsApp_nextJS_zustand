@@ -1,14 +1,23 @@
-import cl from './MainBody.module.css';
-import Image from 'next/image';
-import { Search } from '../Search/Search';
-import { Heading } from '../ui/Heading/Heading';
-import { Paragraph } from '../ui/Paragraph/Paragraph';
-import { FilmList } from '../FilmList/FilmList';
-import { Button } from '../ui/Button/Button';
-import { FC } from 'react';
-import { IMainBodyProps } from './MainBody.props';
+import cl from './MainBody.module.css'
+import Image from 'next/image'
+import { FC } from 'react'
+import { Search } from '../Search/Search'
+import { Button } from '../ui/Button/Button'
+import { Heading } from '../ui/Heading/Heading'
+import { FilmList } from '../FilmList/FilmList'
+import { Paragraph } from '../ui/Paragraph/Paragraph'
+import { FilmService } from '@/services/film.service'
+import { IMainBodyProps } from './MainBody.props'
 
-export const MainBody: FC<IMainBodyProps> = ({ films }) => {
+const filmService = new FilmService()
+
+
+export const MainBody: FC<IMainBodyProps> = async () => {
+	const films = await filmService.getAllFilms()
+	const filmsByName = await filmService.getFilmsByName('Avatar')
+	console.log(filmsByName)
+
+
 	return (
 		<div className={cl.body}>
 			<div className={cl.bodyHeader}>
@@ -19,7 +28,10 @@ export const MainBody: FC<IMainBodyProps> = ({ films }) => {
 				</Paragraph>
 			</div>
 			<div className={cl.bodyInput}>
-				<Search required placeholder={'Введите название'}>
+				<Search
+					required
+					placeholder={'Введите название'}
+				>
 					<Image
 						src='/search.svg'
 						alt='Иконка пользователя'
@@ -31,5 +43,5 @@ export const MainBody: FC<IMainBodyProps> = ({ films }) => {
 			</div>
 			<FilmList films={films} />
 		</div>
-	);
-};
+	)
+}

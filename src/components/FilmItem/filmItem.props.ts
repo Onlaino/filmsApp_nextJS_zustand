@@ -2,11 +2,11 @@ import { IFilm } from '@/types/film.interface';
 
 export interface FilmItemProps {
 	id: string;
-	propIsAdded?: boolean;
-	onRemove?: (id: string) => IFilm[];
 	imgId: string;
 	title: string;
 	rating: string;
+	propIsAdded?: boolean;
+	onRemove?: (id: string) => IFilm[];
 	releaseDate?: object;
 	releaseYear?: {
 		endYear: null | number;
