@@ -1,7 +1,7 @@
 .filmListItems {
 	border-radius: 12px;
 	width: 282px;
-	height: 520px;
+	/* height: 520px; */
 	backdrop-filter: blur(80px);
 	background: rgba(32, 40, 62, 0.6);
 }

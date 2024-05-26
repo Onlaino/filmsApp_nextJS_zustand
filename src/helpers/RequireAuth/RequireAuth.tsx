@@ -12,7 +12,5 @@ export const RequireAuth: FC<IRequireAuthProps> = ({ children }) => {
 		if (!jwt) router.push('/login')
 	}, [jwt, router])
 
-	if (!jwt) return null
-
 	return <div>{children}</div>
 }

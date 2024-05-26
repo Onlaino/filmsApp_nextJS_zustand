@@ -7,7 +7,8 @@ import { RequireAuth } from '@/helpers/RequireAuth/RequireAuth'
 
 export default function FavoritesPage() {
 	const favoriteFilms = usePersonStore((state) => state.userFilms)
-	console.log(favoriteFilms);
+	const jwt = usePersonStore(s => s.jwt);
+	console.log(jwt)
 	return (
 		<RequireAuth>
 			<section>
