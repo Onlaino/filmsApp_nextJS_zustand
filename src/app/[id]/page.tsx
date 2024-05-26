@@ -1,11 +1,18 @@
-import { Paragraph } from '@/components/ui/Paragraph/Paragraph'
 import cl from './id.module.css'
+import { Paragraph } from '@/components/ui/Paragraph/Paragraph'
 import { Heading } from '@/components/ui/Heading/Heading'
 import { FilmPageComponent } from '@/components/FilmPageComponent/FilmPageComponent'
 import { FilmService } from '@/services/film.service'
 import { NOT_FOUND_IMAGE_URL } from '@/helpers/notFoundImage'
 import { Suspense } from 'react'
 import { FilmPageSkeleton } from '@/styles/skeletons/FilmPageSkeleton/FilmPageSkeleton'
+
+export async function generateMetadata({ params }: { params: { id: string } }) {
+	const film = await filmService.getFilmsById(params.id)
+	return {
+		title: film.titleText.text,
+	}
+}
 
 const filmService = new FilmService()
 
@@ -29,7 +36,6 @@ export default async function FilmPage({ params }: { params: { id: string } }) {
 						imgId={
 							primaryImage?.url ? film?.primaryImage.url : NOT_FOUND_IMAGE_URL
 						}
-						// releaseYear={film?.releaseYear?.year}
 					/>
 				</Suspense>
 			</div>

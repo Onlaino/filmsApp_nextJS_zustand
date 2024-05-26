@@ -15,8 +15,6 @@ const filmService = new FilmService()
 export const MainBody: FC<IMainBodyProps> = async () => {
 	const films = await filmService.getAllFilms()
 	const filmsByName = await filmService.getFilmsByName('Avatar')
-	console.log(filmsByName)
-
 
 	return (
 		<div className={cl.body}>

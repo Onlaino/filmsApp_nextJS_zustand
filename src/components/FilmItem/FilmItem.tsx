@@ -2,11 +2,11 @@ import cl from './FilmItem.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FC, useState } from 'react'
-import { RatingBlock } from '../ui/RatingBlock/RatingBlock'
 import { Paragraph } from '../ui/Paragraph/Paragraph'
 import { InSelect } from '../ui/InSelect/InSelect'
 import { FilmItemProps } from './filmItem.props'
 import { usePersonStore } from '@/store'
+import { motion } from 'framer-motion'
 
 export const FilmListItem: FC<FilmItemProps> = ({
 	imgId,
@@ -24,9 +24,14 @@ export const FilmListItem: FC<FilmItemProps> = ({
 	}
 
 	return (
-		<div className={cl.filmListItems}>
+		<motion.div
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			exit={{ opacity: 0 }}
+			transition={{ duration: 0.35 }}
+			className={cl.filmListItems}
+		>
 			<div className={cl.filmListItem}>
-				<RatingBlock rating={rating} />
 				<Link href={`/${id}`}>
 					<Image
 						src={imgId}
@@ -42,6 +47,6 @@ export const FilmListItem: FC<FilmItemProps> = ({
 					onClick={handleIsAdded}
 				/>
 			</div>
-		</div>
+		</motion.div>
 	)
 }

@@ -37,7 +37,6 @@ export const usePersonStore = create(
 						  }
 						: { ...state, userFilms: [...state.userFilms, film] }
 				),
-			// set((state) => ({ ...state, userFilms: [...state.userFilms, film] })),
 
 			removeFilm: (id: string) =>
 				set((state) => ({
