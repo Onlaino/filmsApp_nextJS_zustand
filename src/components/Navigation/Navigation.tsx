@@ -55,7 +55,13 @@ export const Navigation = () => {
 					) : (
 						<div
 							onClick={() => setIsSearchOpen(true)}
+							onKeyDown={evt => {
+								if (evt.key === 'Enter') {
+									setIsSearchOpen(true)
+								}
+							}}
 							className={cl.headerRightItem}
+							tabIndex={0}
 						>
 							Поиск
 						</div>

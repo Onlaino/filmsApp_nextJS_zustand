@@ -1,8 +1,9 @@
 import cl from './SearchFilms.module.css'
 import cn from 'classnames'
 import ExitToAppIcon from '@mui/icons-material/ExitToApp'
+import { motion } from 'framer-motion'
 import { ISearchFilmsProps } from './SearchFilms.props'
-import { KeyboardEventHandler, useEffect, useState } from 'react'
+import { KeyboardEventHandler, useEffect, useRef, useState } from 'react'
 import { IFilm } from '@/types/film.interface'
 import { FilmService } from '@/services/film.service'
 import { FilmSearchItem } from '../FilmSearchItem/FilmSearchItem'
@@ -21,6 +22,7 @@ export const SearchFilms = ({
 }: ISearchFilmsProps) => {
 	const [films, setFilms] = useState<IFilm[] | undefined>([])
 	const [isSearched, setIsSearched] = useState<boolean>(false)
+	const inputRef = useRef<HTMLInputElement>(null)
 	const router = useRouter()
 
 	const handlePressEnter: KeyboardEventHandler<
@@ -39,15 +41,21 @@ export const SearchFilms = ({
 		setIsOpen(false)
 	}
 
+	const handleClosePopup = (event: KeyboardEvent) => {
+		if (event.key === 'Escape') setIsOpen(false)
+	}
+
 	useEffect(() => {
 		if (isOpen) {
+			document.body.addEventListener('keydown', handleClosePopup)
 			document.body.style.overflow = 'hidden'
+			inputRef.current?.focus()
 		}
 		return () => {
+			document.body.removeEventListener('keydown', handleClosePopup)
 			document.body.style.overflow = ''
 		}
 	}, [isOpen])
-
 
 	return (
 		<div
@@ -57,10 +65,16 @@ export const SearchFilms = ({
 			})}
 			{...props}
 		>
-			<div className={cl.find}>
+			<motion.div
+				className={cl.find}
+				initial={{ y: -500 }}
+				animate={{ y: isOpen ? 0 : -500 }}
+				transition={{ duration: 0.35 }}
+			>
 				<h2 className={cl.heading}>Поиск..</h2>
 				<div className={cl.search}>
 					<input
+						ref={inputRef}
 						onKeyDown={e => handlePressEnter(e)}
 						onChange={e => setFileName(e.target.value)}
 						className={cl.input}
@@ -72,10 +86,11 @@ export const SearchFilms = ({
 				<div className={cl.films}>
 					{isSearched ? (
 						<div className={cl.loader}></div>
-					) : isSearched && (!films || films.length === 0) ? (
+					) : isSearched && films && films.length === 0 ? (
 						<h2 className={cl.noFilms}>Фильмы не найдены</h2>
 					) : (
-						films && films.map(f => (
+						films &&
+						films.map(f => (
 							<div
 								className={cl.filmItem}
 								key={f.id}
@@ -94,7 +109,7 @@ export const SearchFilms = ({
 						))
 					)}
 				</div>
-			</div>
+			</motion.div>
 		</div>
 	)
 }
