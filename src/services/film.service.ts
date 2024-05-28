@@ -23,7 +23,7 @@ export class FilmService {
 		}
 	}
 
-	async getFilmsById(id: string) {
+	async getFilmsById(id: string): Promise<IFilm | undefined> {
 		try {
 			const res = await fetch(`${this.BASE_URL}/${id}`, {
 				headers: this.headers,

@@ -24,7 +24,7 @@ export const MainBody: FC<IMainBodyProps> = async () => {
 					добавления в избранное.
 				</Paragraph>
 			</div>
-			<div className={cl.bodyInput}>
+			{/* <div className={cl.bodyInput}>
 				<Search
 					required
 					placeholder={'Введите название'}
@@ -37,7 +37,7 @@ export const MainBody: FC<IMainBodyProps> = async () => {
 					/>
 				</Search>
 				<Button>Искать</Button>
-			</div>
+			</div> */}
 			<FilmList films={films} />
 		</div>
 	)
