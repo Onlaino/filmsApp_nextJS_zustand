@@ -1,0 +1,26 @@
+.film {	
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	gap: 20px;
+	font-size: 18px;
+	padding: 10px 20px;
+	background-color: #000000b8;
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.film a {
+	text-decoration: none;
+
+}
+
+.film:hover {
+	scale: 1.05;
+}
+
+.image {
+	border-radius: 10px;
+	overflow: hidden;
+	object-fit: cover;
+}

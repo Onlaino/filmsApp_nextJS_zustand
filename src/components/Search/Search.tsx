@@ -9,7 +9,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(function Search(
 	ref
 ) {
 	return (
-		<motion.div initial={{x: -300}} animate={{x: 0}} className={cl.search}>
+		<motion.div initial={{ x: -300 }} animate={{ x: 0 }} className={cl.search}>
 			{children}
 			<input
 				{...props}

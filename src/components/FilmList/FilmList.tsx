@@ -11,7 +11,7 @@ import { NOT_FOUND_IMAGE_URL } from '@/helpers/notFoundImage'
 export const FilmList: FC<IFilmListProps> = ({ films }) => {
 	return (
 		<>
-			{films.length ? (
+			{films && films.length ? (
 				<div className={cl.filmList}>
 					{films.map((fl) => (
 						<FilmListItem

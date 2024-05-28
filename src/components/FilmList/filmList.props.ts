@@ -1,5 +1,5 @@
 import { IFilm } from '@/types/film.interface';
 
 export interface IFilmListProps {
-	films: IFilm[];
+	films: IFilm[] | undefined;
 }
