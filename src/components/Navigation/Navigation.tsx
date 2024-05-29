@@ -43,7 +43,7 @@ export const Navigation = () => {
 				</button>
 			)}
 
-			{isPopupOpen && (
+	
 				<nav
 					className={cn(cl.headerNav, {
 						[cl.show]: isPopupOpen,
@@ -130,7 +130,7 @@ export const Navigation = () => {
 						)}
 					</div>
 				</nav>
-			)}
+	
 		</header>
 	)
 }

@@ -8,7 +8,7 @@ import { IFilm } from '@/types/film.interface'
 import { FilmService } from '@/services/film.service'
 import { FilmSearchItem } from '../FilmSearchItem/FilmSearchItem'
 import { NOT_FOUND_IMAGE_URL } from '@/helpers/notFoundImage'
-import { useRouter } from 'next/navigation'
+import { redirect, useRouter } from 'next/navigation'
 
 const filmService = new FilmService()
 
@@ -39,6 +39,7 @@ export const SearchFilms = ({
 	const handleGoToFilm = (id: string) => {
 		router.push(`/${id}`)
 		setIsOpen(false)
+		// redirect(`/${id}`)
 	}
 
 	const handleClosePopup = (event: KeyboardEvent) => {

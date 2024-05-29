@@ -12,19 +12,16 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
 	const film = await filmService.getFilmsById(params.id)
 	if (film) {
 		return {
-		title: film.titleText.text,
+			title: film.titleText.text,
+		}
 	}
-	}
-	
 }
 
 const filmService = new FilmService()
 
 export default async function FilmPage({ params }: { params: { id: string } }) {
 	const film = await filmService.getFilmsById(params.id)
-
 	if (!film) return notFound()
-
 	const { id, primaryImage, titleText } = film
 
 	return (
