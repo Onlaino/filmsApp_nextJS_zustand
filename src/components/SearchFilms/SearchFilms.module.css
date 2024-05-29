@@ -35,7 +35,6 @@
 }
 
 .find {
-
 	width: 600px;
 	display: flex;
 	flex-direction: column;
@@ -92,4 +91,14 @@
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+@media (max-width:470px) {
+	.find {
+		width: 90%;
+	}
+	.search {
+		padding: 10px;
+		width: 80%;
+	}
 }

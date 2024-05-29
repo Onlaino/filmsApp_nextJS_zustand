@@ -4,7 +4,8 @@ import cn from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
 import PersonIcon from '@mui/icons-material/Person'
-import { motion } from 'framer-motion'
+import CloseIcon from '@mui/icons-material/Close'
+import MenuOpenIcon from '@mui/icons-material/MenuOpen'
 import { usePathname } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 import { usePersonStore } from '@/store'
@@ -15,95 +16,121 @@ export const Navigation = () => {
 	const pathname = usePathname()
 	const router = useRouter()
 	const { userName, jwt, logout, userFilms } = usePersonStore(s => s)
+	const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false)
 	const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false)
 	const [filmName, setFilmName] = useState<string>('')
 
 	const handleLogout = () => {
 		logout()
 		router.push('/login')
+		setIsPopupOpen(false)
 	}
 
 	return (
-		<motion.header
-			className={cl.header}
-			initial={{ y: -300 }}
-			animate={{ y: 0 }}
-			exit={{ y: -200 }}
-			transition={{ duration: 0.35 }}
-		>
-			<nav className={cl.headerNav}>
-				<Link href={'/'}>
-					<Image src={'/logo.svg'} alt='logotype' width={40} height={40} />
-				</Link>
+		<header onKeyDown={(e) => {
+			if (e.key === 'Escape') setIsPopupOpen(false)
+		}} className={cl.header}>
+			{!isPopupOpen ? (
+				<button className={cl.buttonPopup} onClick={() => setIsPopupOpen(true)}>
+					<MenuOpenIcon />
+				</button>
+			) : (
+				<button
+					className={cl.buttonPopup}
+					onClick={() => setIsPopupOpen(false)}
+				>
+					<CloseIcon />
+				</button>
+			)}
 
-				<div className={cl.headerRight}>
-					<Link
-						href='/'
-						className={cn(cl.headerRightItem, {
-							[cl.active]: pathname === '/',
-						})}
-					>
-						Фильмы
-					</Link>
-					{isSearchOpen ? (
-						<SearchFilms
-							setIsOpen={setIsSearchOpen}
-							setFileName={setFilmName}
-							filmName={filmName}
-							isOpen={isSearchOpen}
+			{isPopupOpen && (
+				<nav
+					className={cn(cl.headerNav, {
+						[cl.show]: isPopupOpen,
+						[cl.hidden]: !isPopupOpen,
+					})}
+				>
+					<Link href={'/'} className={cl.logo}>
+						<Image
+							onClick={() => setIsPopupOpen(false)}
+							src={'/logo.svg'}
+							alt='logotype'
+							width={40}
+							height={40}
 						/>
-					) : (
-						<div
-							onClick={() => setIsSearchOpen(true)}
-							onKeyDown={evt => {
-								if (evt.key === 'Enter') {
-									setIsSearchOpen(true)
-								}
-							}}
-							className={cl.headerRightItem}
-							tabIndex={0}
-						>
-							Поиск
-						</div>
-					)}
-
-					<Link
-						className={cn(cl.headerRightItem, {
-							[cl.active]: pathname === '/favorites',
-						})}
-						href={'/favorites'}
-					>
-						Избранное
-						<div className={`${cl.favorite}`}>{userFilms.length}</div>
 					</Link>
 
-					{userName.length > 1 && (
-						<div className={`${cl.headerRightItem} ${cl.big}`}>
-							<PersonIcon />
-							{userName}
-						</div>
-					)}
-
-					{jwt ? (
+					<div className={cl.headerRight}>
 						<Link
-							onClick={handleLogout}
-							href={'/login'}
-							className={cl.headerRightItem}
-						>
-							Выйти
-						</Link>
-					) : (
-						<Link
-							href={'/login'}
+							href='/'
 							className={cn(cl.headerRightItem, {
-								[cl.active]: pathname === '/login',
+								[cl.active]: pathname === '/',
 							})}
 						>
-							Войти
+							<span onClick={() => setIsPopupOpen(false)}>Фильмы</span>
 						</Link>
-					)}
-				</div>
-			</nav>
-		</motion.header>
+						{isSearchOpen ? (
+							<SearchFilms
+								setIsOpen={setIsSearchOpen}
+								setFileName={setFilmName}
+								filmName={filmName}
+								isOpen={isSearchOpen}
+							/>
+						) : (
+							<div
+								onClick={() => setIsSearchOpen(true)}
+								onKeyDown={evt => {
+									if (evt.key === 'Enter') {
+										setIsSearchOpen(true)
+									}
+								}}
+								className={cl.headerRightItem}
+								tabIndex={0}
+							>
+								Поиск
+							</div>
+						)}
+
+						<Link
+							onClick={() => setIsPopupOpen(false)}
+							className={cn(cl.headerRightItem, {
+								[cl.active]: pathname === '/favorites',
+							})}
+							href={'/favorites'}
+						>
+							Избранное
+							<div className={`${cl.favorite}`}>{userFilms.length}</div>
+						</Link>
+
+						{userName.length > 1 && (
+							<div className={`${cl.headerRightItem} ${cl.big}`}>
+								<PersonIcon />
+								{userName}
+							</div>
+						)}
+
+						{jwt ? (
+							<Link
+								onClick={handleLogout}
+								href={'/login'}
+								className={cl.headerRightItem}
+							>
+								Выйти
+							</Link>
+						) : (
+							<Link
+								onClick={() => setIsPopupOpen(false)}
+								href={'/login'}
+								className={cn(cl.headerRightItem, {
+									[cl.active]: pathname === '/login',
+								})}
+							>
+								Войти
+							</Link>
+						)}
+					</div>
+				</nav>
+			)}
+		</header>
 	)
 }

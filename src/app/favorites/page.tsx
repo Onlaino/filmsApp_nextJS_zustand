@@ -8,12 +8,11 @@ import { AnimatePresence } from 'framer-motion'
 
 export default function FavoritesPage() {
 	const favoriteFilms = usePersonStore((state) => state.userFilms)
-	const jwt = usePersonStore(s => s.jwt);
 
 	return (
 		<RequireAuth>
 			<section>
-				<Heading>Избранное</Heading>
+				<Heading clazz={cl.heading}>Избранное</Heading>
 				<div className={cl.filmList}>
 					{favoriteFilms.map((fl) => (
 						<AnimatePresence key={fl.id}>

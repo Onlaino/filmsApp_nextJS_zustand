@@ -32,12 +32,14 @@ export const FilmListItem: FC<FilmItemProps> = ({
 			className={cl.filmListItems}
 		>
 			<div className={cl.filmListItem}>
-				<Link href={`/${id}`}>
+				<Link className={cl.link} href={`/${id}`}>
 					<Image
 						src={imgId}
-						alt={title}
+						alt='image'
 						width={266}
 						height={400}
+						layout='responsive'
+						sizes='(min-width: 430px) 80px, 100px'
 						className={cl.filmImage}
 					/>
 				</Link>

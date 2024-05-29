@@ -27,11 +27,11 @@
 	cursor: pointer;
 	right: 25px;
 	top: 24px;
-	position: absolute;	
+	position: absolute;
 	border: none;
 	background: transparent;
 	outline: none;
-	transition: all .35s ease;
+	transition: all 0.35s ease;
 	font-size: 18px;
 	color: #6f7173;
 }
@@ -41,7 +41,7 @@
 }
 
 .clearInput:active {
-	transform: scale(.95);
+	transform: scale(0.95);
 }
 
 @keyframes clearInputScale {
@@ -50,5 +50,18 @@
 	}
 	to {
 		scale: 1;
+	}
+}
+
+@media (max-width: 470px) {
+	.body {	
+		margin-top: 0;
+	}
+	.bodyHeader {
+			height: 70px;
+		width: auto;
+		font-size: 30px;
+		text-align: center;
+		margin-top: 10px;
 	}
 }

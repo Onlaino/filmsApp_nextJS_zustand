@@ -24,3 +24,7 @@
 	overflow: hidden;
 	object-fit: cover;
 }
+
+@media (max-width:470px) {
+
+}

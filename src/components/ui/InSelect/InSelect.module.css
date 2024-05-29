@@ -29,3 +29,15 @@
 	color: #37D8A7;
 }
 
+@media(max-width: 470px) {
+	.select {
+		margin: 0;
+		padding: 0;
+	}
+	.selectParargaph {
+		font-size: 14px;
+	}
+	.span {
+		display: none;
+	}
+}

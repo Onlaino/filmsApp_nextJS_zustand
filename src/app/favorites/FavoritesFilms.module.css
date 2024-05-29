@@ -6,11 +6,8 @@
 	flex-wrap: wrap;
 }
 
-.noFavorite {
-	/* h3 {
-		font-size: 32px;
-		font-weight: normal;
-		font-style: italic;
-		color: #7B6EF6 ;
-	} */
+.heading {
+	font-size: 30px;
+	text-align: center;
+	margin-top: 10px;
 }

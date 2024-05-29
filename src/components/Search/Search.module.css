@@ -28,3 +28,13 @@
 	caret-color: rgb(255, 255, 255);
     color: rgb(255, 255, 255);
 }
+
+
+@media(max-width: 470px) {
+	.search {
+	width: 80%;
+}
+.searchInput {
+    /* width: 80%; */
+}
+}

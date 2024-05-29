@@ -40,7 +40,7 @@ export const InSelect = ({ onClick, isAdded, ...props }: IInSelectProps) => {
 					[cl.added]: isAdded,
 				})}
 			>
-				{isAdded ? 'В избранном' : 'В избранное'}
+				{isAdded ? <span className={cl.span}>В избранном</span> : <span className={cl.span}>В избранное</span>}
 			</Paragraph>
 		</div>
 	)

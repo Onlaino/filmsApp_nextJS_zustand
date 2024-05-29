@@ -4,15 +4,19 @@
 	font-weight: 400;
 
 	color-scheme: dark;
-	color: rgba(255, 255, 255, 0.87);
-	background: url('/background.svg') center center/cover no-repeat;
-	background: #121829 tran;
-
 
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		color-scheme: dark;
+		background: url('/background.svg') center center/cover no-repeat;
+		background: #121829 tran;
+	}
 }
 
 a {
@@ -28,10 +32,24 @@ body {
 	position: relative;
 }
 
+body section {
+	height: 100svh;
+}
+
 .container {
-	margin: 0 140px ;
+	margin: 0 140px;
 }
 
 .main_section {
 	margin-top: 120px;
+}
+
+@media (max-width: 470px) {
+	.container {
+		margin: 0 40px;
+	}
+
+	.main_section {
+		margin: 0;
+	}
 }

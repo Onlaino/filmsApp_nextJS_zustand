@@ -15,7 +15,7 @@ export const MainBody: FC<IMainBodyProps> = async () => {
 	return (
 		<div className={cl.body}>
 			<div className={cl.bodyHeader}>
-				<Heading>Фильмы</Heading>
+				<Heading clazz={cl.bodyHeader}>Фильмы</Heading>
 			</div>
 			<FilmList films={films} />
 		</div>

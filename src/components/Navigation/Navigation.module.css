@@ -1,3 +1,7 @@
+.buttonPopup {
+	display: none;
+}
+
 .header {
 	position: fixed;
 	z-index: 100;
@@ -56,7 +60,7 @@
 }
 
 .headerRightItem:active {
-	scale: .95;
+	scale: 0.95;
 }
 
 .active {
@@ -85,7 +89,6 @@
 	border-radius: 50%;
 }
 
-
 .popupNavigate {
 	position: relative;
 }
@@ -93,8 +96,8 @@
 	text-align: center;
 	display: none;
 	position: absolute;
-  bottom: -100px;
-  right: -50px;
+	bottom: -100px;
+	right: -50px;
 	color: white;
 	background-color: #ffffffae;
 	width: 115px;
@@ -102,7 +105,7 @@
 	padding: 10px;
 	border-radius: 10px;
 	font-size: 14px;
-	animation: openPopup .55s;
+	animation: openPopup 0.55s;
 }
 
 .openedPopupNavigateOpened {
@@ -110,12 +113,6 @@
 }
 
 @keyframes openPopup {
-	/* from {
-		bottom: 300px;
-	}
-	to {
-		bottom: -100px;
-	} */
 	from {
 		opacity: 0;
 	}
@@ -146,7 +143,44 @@
 	}
 }
 
-
 .big {
 	color: #8d82f3;
+}
+
+@media (max-width: 470px) {
+	.show {
+		display: block;
+	}
+
+	.hidden {
+		display: none;
+	}
+	.header {
+		position: fixed;
+		width: 100vw;
+		margin: 0;
+	}
+	.headerNav {
+		height: 100vh;
+		flex-direction: column;
+		padding: 70px 30px;
+		background: rgba(18, 24, 41, 0.7);
+	}
+	.logo {
+		display: none;
+	}
+	.headerRight {
+		width: 100%;
+		flex-direction: column;
+		justify-content: center;
+		gap: 20px;
+	}
+	.buttonPopup {
+		display: block;
+		position: absolute;
+		border: none;
+		outline: none;
+		right: 30px;
+		top: 50px;
+	}
 }

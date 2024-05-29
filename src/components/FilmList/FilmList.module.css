@@ -18,3 +18,9 @@
 	font-size: 24px;
 	line-height: 1.6;
 }
+
+@media (max-width: 470px) {
+	.filmList {
+		flex-direction: column;
+	}
+}
