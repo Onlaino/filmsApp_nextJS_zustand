@@ -28,7 +28,7 @@ export default async function FilmPage({ params }: { params: { id: string } }) {
 		<section>
 			<div className={cl.film}>
 				<div className={cl.head}>
-					<Paragraph clazz={cl.paragraph}>Поиск фильмов</Paragraph>
+					<Paragraph clazz={cl.paragraph}>Страница фильма</Paragraph>
 					<Heading clazz={cl.heading}>{titleText?.text}</Heading>
 				</div>
 				<Suspense fallback={<FilmPageSkeleton />}>

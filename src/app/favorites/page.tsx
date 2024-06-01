@@ -7,14 +7,14 @@ import { RequireAuth } from '@/helpers/RequireAuth/RequireAuth'
 import { AnimatePresence } from 'framer-motion'
 
 export default function FavoritesPage() {
-	const favoriteFilms = usePersonStore((state) => state.userFilms)
+	const favoriteFilms = usePersonStore(state => state.userFilms)
 
 	return (
 		<RequireAuth>
 			<section>
 				<Heading clazz={cl.heading}>Избранное</Heading>
 				<div className={cl.filmList}>
-					{favoriteFilms.map((fl) => (
+					{favoriteFilms.map(fl => (
 						<AnimatePresence key={fl.id}>
 							<FilmListItem
 								key={fl.id}

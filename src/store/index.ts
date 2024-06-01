@@ -9,8 +9,6 @@ export const usePersonStore = create(
 			isLogined: false,
 			jwt: '',
 			userFilms: [],
-			// updateUserName: (name: string) =>к
-			// set((state) => ({ ...state, userName: name })),
 
 			login: (name: string) =>
 				set((state) => ({
@@ -37,12 +35,6 @@ export const usePersonStore = create(
 						  }
 						: { ...state, userFilms: [...state.userFilms, film] }
 				),
-
-			removeFilm: (id: string) =>
-				set((state) => ({
-					...state,
-					userFilms: state.userFilms.filter((fl) => fl.id !== id),
-				})),
 		}),
 		{
 			name: 'person-store',

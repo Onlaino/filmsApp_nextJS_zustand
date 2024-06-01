@@ -30,6 +30,7 @@ a {
 
 body {
 	position: relative;
+	height: 100vh;
 }
 
 body section {
@@ -47,6 +48,7 @@ body section {
 @media (max-width: 470px) {
 	.container {
 		margin: 0 40px;
+		height: 100svh;
 	}
 
 	.main_section {

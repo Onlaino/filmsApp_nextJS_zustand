@@ -39,7 +39,7 @@ export const FilmListItem: FC<FilmItemProps> = ({
 						width={266}
 						height={400}
 						layout='responsive'
-						sizes='(min-width: 430px) 80px, 100px'
+						// sizes='(min-width: 430px) 80px, 100px'
 						className={cl.filmImage}
 					/>
 				</Link>

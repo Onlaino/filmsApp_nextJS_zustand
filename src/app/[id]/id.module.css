@@ -20,6 +20,12 @@
 	color: #beb7fb;
 }
 
-@media(max-width: 470px) {
-	
+@media (max-width: 470px) {
+	.film {
+		width: auto;
+		height: 100vh;
+	}
+	.heading {
+		font-size: 20px;
+	}
 }

@@ -4,7 +4,6 @@ import Image from 'next/image'
 import { Paragraph } from '../ui/Paragraph/Paragraph'
 import { RatingBlock } from '../ui/RatingBlock/RatingBlock'
 import { InSelect } from '../ui/InSelect/InSelect'
-import { IFilmPageProps } from './filmPageComponent.interface'
 import { usePersonStore } from '@/store'
 import { usePathname } from 'next/navigation'
 import { IFavoriteFilm } from '@/types/film.interface'
@@ -59,7 +58,6 @@ export const FilmPageComponent = ({id, imgId, title, rating, isAdded}: IFavorite
 						</Paragraph>
 						<Paragraph clazz={cl.p}>
 							Дата выхода: <span className='span'>1999</span>
-							{/* {filmById?.releaseYear?.year} */}
 						</Paragraph>
 						<Paragraph clazz={cl.p}>
 							Длительность: <span>180 минут</span>

@@ -12,5 +12,5 @@ export type UserActions = {
 	login: (name: string) => void
 	logout: () => void
 	addFilm: (film: IFavoriteFilm) => void
-	removeFilm: (id: string) => void
+	// removeFilm: (id: string) => void
 }
