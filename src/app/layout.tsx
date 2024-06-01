@@ -1,4 +1,5 @@
 import '../styles/global.css'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Montserrat_Alternates } from 'next/font/google'
 import { Navigation } from '@/components/Navigation/Navigation'
 import type { Metadata } from 'next'
@@ -21,7 +22,10 @@ export default function RootLayout({
 			<body className={monsterrat.className}>
 				<main className='container'>
 					<Navigation />
-					<section className='main_section'>{children}</section>
+					<section className='main_section'>
+						{children}
+						<SpeedInsights />
+					</section>
 				</main>
 			</body>
 		</html>
